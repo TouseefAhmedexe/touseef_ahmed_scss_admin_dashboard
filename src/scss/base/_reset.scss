@@ -1,0 +1,40 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:where(body, h1, h2, h3, p, ul, ol, figure, address, fieldset, legend) {
+    margin: 0;
+}
+
+:where(ul, ol) {
+    padding: 0;
+}
+
+:where(ul[class], ol[class]) {
+    list-style-type: none;
+}
+
+:where(fieldset) {
+    border: 0;
+    min-inline-size: 0;
+    padding: 0;
+}
+
+:where(table) {
+    border-collapse: collapse;
+}
+
+:where(button, input, select, textarea) {
+    font: inherit;
+}
+
+img {
+    display: block;
+    max-inline-size: 100%;
+}
+
+[hidden] {
+    display: none;
+}

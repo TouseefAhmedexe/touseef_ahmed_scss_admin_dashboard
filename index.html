@@ -16,6 +16,7 @@
     <div class="app">
         <input class="nav-toggle__input" type="checkbox" id="nav-toggle" name="nav_toggle">
         <label class="app__backdrop" for="nav-toggle"></label>
+
         <aside class="sidebar">
             <a class="sidebar__brand" href="#overview">Bloomrix Interns</a>
 
@@ -31,6 +32,7 @@
 
             <p class="sidebar__note">All data is sample data.</p>
         </aside>
+
         <div class="app__main">
             <header class="topbar">
                 <label class="nav-toggle__button" for="nav-toggle">Menu</label>
@@ -47,7 +49,7 @@
             </header>
 
             <main class="content" id="main-content">
-<div class="page-header">
+                <div class="page-header">
                     <nav class="breadcrumb">
                         <ol class="breadcrumb__list">
                             <li class="breadcrumb__item"><a href="#overview">Home</a></li>
@@ -103,7 +105,8 @@
                             </div>
                         </div>
                     </section>
-<section class="dashboard__assignments panel" id="assignments">
+
+                    <section class="dashboard__assignments panel" id="assignments">
                         <h2 class="panel__title">Assignments</h2>
 
                         <fieldset class="filters">
@@ -208,15 +211,90 @@
                             </table>
                         </div>
                     </section>
-                </div>
 
+                    <section class="dashboard__states panel" id="states">
+                        <h2 class="panel__title">Interface states</h2>
+                        <p>Examples of the button, loading, empty and error states used in this interface.</p>
+
+                        <h3>Buttons</h3>
+                        <div class="button-row">
+                            <button class="button" type="button">Normal</button>
+                            <button class="button button--secondary" type="button">Secondary</button>
+                            <button class="button" type="button" disabled>Disabled</button>
+                            <button class="button button--loading" type="button" disabled>Saving</button>
+                        </div>
+
+                        <h3>Loading example</h3>
+                        <div class="skeleton">
+                            <div class="skeleton__line skeleton__line--short"></div>
+                            <div class="skeleton__line"></div>
+                            <div class="skeleton__line"></div>
+                        </div>
+
+                        <h3>Empty state example</h3>
+                        <div class="empty-state">
+                            <p class="empty-state__title">No assignments found</p>
+                            <p class="empty-state__text">Add an assignment to see it here.</p>
+                        </div>
+
+                        <h3>Error example</h3>
+                        <p class="alert alert--error">The assignment could not be saved. Check the form and try again.</p>
+                    </section>
+                </div>
             </main>
 
             <footer class="footer">
                 <p><small>&copy; 2026 Touseef Ahmed. A sample admin dashboard.</small></p>
             </footer>
         </div>
+    </div>
 
+    <div class="modal" id="new-assignment">
+        <a class="modal__backdrop" href="#main-content"><span class="u-visually-hidden">Close the form</span></a>
+
+        <section class="modal__box">
+            <h2 class="modal__title">New assignment</h2>
+            <p class="u-text-muted">This form has no server, so sending it only reloads the page.</p>
+
+            <form class="form" id="assignment-form">
+                <div class="form__field">
+                    <label class="form__label" for="assignment-title">Title</label>
+                    <input class="form__control" type="text" id="assignment-title" name="title" placeholder="Example: Browser APIs" minlength="5" maxlength="60" required>
+                    <p class="form__error">Use 5 to 60 characters.</p>
+                </div>
+
+                <div class="form__field">
+                    <label class="form__label" for="assignment-category">Category</label>
+                    <select class="form__control" id="assignment-category" name="category" required>
+                        <option value="" selected>-- Select a category --</option>
+                        <option value="css">CSS</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="review">Review</option>
+                    </select>
+                </div>
+
+                <div class="form__field">
+                    <label class="form__label" for="assignment-mentor">Mentor</label>
+                    <input class="form__control" type="text" id="assignment-mentor" name="mentor" value="Assigned after review" disabled>
+                </div>
+
+                <div class="form__field">
+                    <label class="form__label" for="assignment-due">Due date</label>
+                    <input class="form__control" type="date" id="assignment-due" name="due_date" min="2026-11-16" max="2027-03-31" required>
+                </div>
+
+                <div class="form__field">
+                    <label class="form__label" for="assignment-notes">Notes</label>
+                    <textarea class="form__control" id="assignment-notes" name="notes" rows="4" placeholder="Write at least 10 characters" minlength="10" maxlength="300" required></textarea>
+                    <p class="form__error">Write 10 to 300 characters.</p>
+                </div>
+
+                <div class="form__actions">
+                    <button class="button" type="submit">Save assignment</button>
+                    <a class="button button--secondary" href="#main-content">Cancel</a>
+                </div>
+            </form>
+        </section>
     </div>
 </body>
 

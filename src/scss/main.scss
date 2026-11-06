@@ -1,0 +1,32 @@
+@use "sass:meta";
+@use "abstracts";
+
+@layer reset, base, layout, components, pages, utilities, overrides;
+
+@layer reset {
+    @include meta.load-css("base/reset");
+}
+
+@layer base {
+    @include meta.load-css("base");
+}
+
+@layer layout {
+    @include meta.load-css("layout");
+}
+
+@layer components {
+    @include meta.load-css("components");
+}
+
+@layer pages {
+    @include meta.load-css("pages");
+}
+
+@layer utilities {
+    @include meta.load-css("utilities");
+}
+
+@layer overrides {
+    @include meta.load-css("overrides");
+}

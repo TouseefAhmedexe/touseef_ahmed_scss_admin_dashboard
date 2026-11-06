@@ -1,0 +1,34 @@
+@use "sass:map";
+@use "../abstracts" as *;
+
+.badge {
+    --badge-color: var(--color-text-muted);
+    --badge-dot: transparent;
+    align-items: center;
+    border: 1px solid currentColor;
+    border-radius: var(--radius-pill);
+    color: var(--badge-color);
+    display: inline-flex;
+    font-size: var(--font-size-sm);
+    font-weight: bold;
+    gap: var(--space-xs);
+    padding: var(--space-2xs) var(--space-sm);
+    white-space: nowrap;
+
+    &::before {
+        background: var(--badge-dot);
+        block-size: 0.6rem;
+        border: 2px solid currentColor;
+        border-radius: 50%;
+        content: "";
+        inline-size: 0.6rem;
+    }
+}
+
+@each $key, $config in $statuses {
+    .badge--#{$key} {
+        --badge-color: #{map.get($config, "color")};
+        --badge-dot: #{map.get($config, "dot")};
+        border-style: #{map.get($config, "border")};
+    }
+}

@@ -1,0 +1,83 @@
+@use "../abstracts" as *;
+
+.button {
+    background-color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-sm);
+    color: var(--color-on-primary);
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.6em 1.2em;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    user-select: none;
+
+    &:link,
+    &:visited {
+        color: var(--color-on-primary);
+    }
+
+    &:hover:not(:disabled) {
+        background-color: var(--color-primary-strong);
+        border-color: var(--color-primary-strong);
+        transform: translateY(-2px);
+    }
+
+    &:active:not(:disabled) {
+        transform: scale(0.96);
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.55;
+    }
+
+    &--secondary {
+        background-color: transparent;
+        color: var(--color-primary);
+
+        &:link,
+        &:visited {
+            color: var(--color-primary);
+        }
+
+        &:hover:not(:disabled) {
+            background-color: var(--color-surface-alt);
+            color: var(--color-primary-strong);
+        }
+    }
+
+    &--loading {
+        cursor: progress;
+        padding-inline-start: 2.6em;
+        position: relative;
+
+        &:disabled {
+            cursor: progress;
+            opacity: 0.85;
+        }
+
+        &::before {
+            animation: spin 1s linear infinite;
+            block-size: 1em;
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            border-block-start-color: #ffffff;
+            border-radius: 50%;
+            content: "";
+            inline-size: 1em;
+            inset-block-start: 50%;
+            inset-inline-start: 1em;
+            margin-block-start: -0.5em;
+            position: absolute;
+        }
+    }
+}
+
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-block-end: var(--space-md);
+}

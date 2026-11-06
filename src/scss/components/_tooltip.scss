@@ -1,0 +1,36 @@
+@use "../abstracts" as *;
+
+.tooltip {
+    cursor: help;
+    position: relative;
+    text-decoration: underline dotted;
+
+    &::after {
+        background-color: var(--color-text);
+        border-radius: var(--radius-sm);
+        color: var(--color-bg);
+        content: attr(data-tooltip);
+        font-size: var(--font-size-sm);
+        font-weight: normal;
+        inline-size: max-content;
+        inset-block-start: 100%;
+        inset-inline-start: 0;
+        margin-block-start: var(--space-2xs);
+        max-inline-size: 14rem;
+        opacity: 0;
+        padding: var(--space-xs) var(--space-sm);
+        pointer-events: none;
+        position: absolute;
+        text-transform: none;
+        transition: opacity 0.2s ease-in-out;
+        visibility: hidden;
+        white-space: normal;
+        z-index: z("tooltip");
+    }
+
+    &:hover::after,
+    &:focus-visible::after {
+        opacity: 1;
+        visibility: visible;
+    }
+}

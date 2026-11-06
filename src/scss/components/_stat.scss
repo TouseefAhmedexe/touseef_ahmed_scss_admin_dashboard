@@ -1,0 +1,62 @@
+@use "sass:map";
+@use "../abstracts" as *;
+
+.widget {
+    container-name: stat-widget;
+    container-type: inline-size;
+}
+
+.stat {
+    --stat-color: var(--color-primary);
+    @include surface;
+    border-inline-start: 6px solid var(--stat-color);
+    display: grid;
+    gap: var(--space-2xs);
+    padding: var(--space-md);
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+    &:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateY(-3px);
+    }
+
+    &__label {
+        color: var(--color-text-muted);
+        font-size: var(--font-size-sm);
+        letter-spacing: 1px;
+        margin: 0;
+        text-transform: uppercase;
+    }
+
+    &__value {
+        color: var(--stat-color);
+        font-size: clamp(2rem, 14cqi, 3rem);
+        font-weight: bold;
+        line-height: 1;
+        margin: 0;
+    }
+
+    &__note {
+        color: var(--color-text-muted);
+        font-size: var(--font-size-sm);
+        margin: 0;
+    }
+}
+
+@each $key, $config in $statuses {
+    .stat--#{$key} {
+        --stat-color: #{map.get($config, "color")};
+    }
+}
+
+@container stat-widget (min-width: 15rem) {
+    .stat {
+        align-items: center;
+        column-gap: var(--space-md);
+        grid-template-columns: auto 1fr;
+    }
+
+    .stat__label {
+        grid-column: 1 / -1;
+    }
+}

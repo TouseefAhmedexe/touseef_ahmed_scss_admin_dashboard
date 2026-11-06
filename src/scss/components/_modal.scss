@@ -1,0 +1,43 @@
+@use "../abstracts" as *;
+
+.modal {
+    display: none;
+    inset: 0;
+    padding: var(--space-md);
+    place-items: center;
+    position: fixed;
+    z-index: z("modal");
+
+    &:target {
+        display: grid;
+    }
+
+    &__backdrop {
+        background-color: rgba(0, 0, 0, 0.6);
+        inset: 0;
+        position: absolute;
+    }
+
+    &__box {
+        @include surface;
+        animation: modal-in 0.2s ease-out;
+        box-shadow: var(--shadow-md);
+        inline-size: 100%;
+        max-block-size: 90vh;
+        max-inline-size: 32rem;
+        overflow-y: auto;
+        padding: var(--space-lg);
+        position: relative;
+    }
+
+    &__title {
+        margin-block-end: var(--space-xs);
+    }
+}
+
+@keyframes modal-in {
+    from {
+        opacity: 0;
+        transform: translateY(1rem);
+    }
+}

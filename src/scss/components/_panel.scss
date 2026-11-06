@@ -1,0 +1,13 @@
+@use "../abstracts" as *;
+
+.panel {
+    @include surface;
+    padding: var(--space-lg);
+}
+
+.panel__title {
+    border-block-end: 3px solid var(--color-primary);
+    color: var(--color-primary-strong);
+    margin-block-end: var(--space-md);
+    padding-block-end: var(--space-xs);
+}

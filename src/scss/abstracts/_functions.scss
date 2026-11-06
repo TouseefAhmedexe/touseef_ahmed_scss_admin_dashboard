@@ -1,0 +1,15 @@
+@use "sass:map";
+@use "sass:math";
+@use "variables" as *;
+
+@function to-rem($px, $base: 16) {
+    @return math.div($px, $base) * 1rem;
+}
+
+@function z($layer) {
+    @if not map.has-key($z-layers, $layer) {
+        @error "Unknown layer: #{$layer}";
+    }
+
+    @return map.get($z-layers, $layer);
+}

@@ -1,0 +1,82 @@
+@use "../abstracts" as *;
+
+.form {
+    display: grid;
+    gap: var(--space-md);
+}
+
+.form__field {
+    display: grid;
+    gap: var(--space-2xs);
+}
+
+.form__label {
+    font-weight: bold;
+}
+
+.form__field:has(:required) .form__label::after {
+    color: var(--color-danger);
+    content: " *";
+}
+
+.form__control {
+    background-color: var(--color-surface);
+    border: 2px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    color: var(--color-text);
+    inline-size: 100%;
+    padding: 0.55em 0.75em;
+    resize: vertical;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+
+    &:hover:enabled {
+        border-color: var(--color-primary);
+    }
+
+    &:focus-visible {
+        background-color: var(--color-surface-alt);
+        border-color: var(--color-primary);
+    }
+
+    &:disabled {
+        background-color: var(--color-surface-alt);
+        border-style: dashed;
+        color: var(--color-text-muted);
+        cursor: not-allowed;
+    }
+
+    &::placeholder {
+        color: var(--color-text-muted);
+        font-style: italic;
+    }
+
+    &[placeholder]:not(:placeholder-shown):invalid {
+        border-color: var(--color-danger);
+    }
+
+    &[placeholder]:not(:placeholder-shown):valid {
+        border-color: var(--color-success);
+    }
+}
+
+.form__error {
+    color: var(--color-danger);
+    display: none;
+    font-size: var(--font-size-sm);
+    font-weight: bold;
+    margin: 0;
+
+    &::before {
+        content: "Error: ";
+    }
+}
+
+.form__field:has(.form__control[placeholder]:not(:placeholder-shown):invalid) .form__error {
+    display: block;
+}
+
+.form__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+}

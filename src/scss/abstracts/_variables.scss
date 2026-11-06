@@ -1,0 +1,50 @@
+$breakpoints: (
+    "md": 48em,
+    "lg": 64em
+);
+
+$spacing: (
+    "2xs": 0.25rem,
+    "xs": 0.5rem,
+    "sm": 0.75rem,
+    "md": 1rem,
+    "lg": 1.5rem,
+    "xl": 2.5rem
+);
+
+$radii: (
+    "sm": 6px,
+    "md": 12px,
+    "pill": 999px
+);
+
+$z-layers: (
+    "tooltip": 10,
+    "topbar": 20,
+    "backdrop": 25,
+    "sidebar": 30,
+    "modal": 50,
+    "skip": 60
+);
+
+$statuses: (
+    "completed": (
+        "color": var(--color-success),
+        "dot": currentColor,
+        "border": solid
+    ),
+    "in-progress": (
+        "color": var(--color-warning),
+        "dot": linear-gradient(90deg, currentColor 50%, transparent 50%),
+        "border": solid
+    ),
+    "pending": (
+        "color": var(--color-text-muted),
+        "dot": transparent,
+        "border": dashed
+    )
+);
+
+$progress-steps: 0, 25, 50, 75, 100;
+
+$sidebar-width: 16rem;

@@ -1,0 +1,74 @@
+@use "../abstracts" as *;
+
+.table-wrap {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+}
+
+.table {
+    inline-size: 100%;
+    min-inline-size: 40rem;
+
+    &__caption {
+        color: var(--color-text-muted);
+        padding: var(--space-md);
+        text-align: start;
+    }
+
+    &__head,
+    &__cell {
+        border-block-end: 1px solid var(--color-border);
+        padding: var(--space-xs) var(--space-md);
+        text-align: start;
+        vertical-align: middle;
+    }
+
+    &__head {
+        background-color: var(--color-primary-strong);
+        color: var(--color-on-primary);
+        white-space: nowrap;
+    }
+
+    &__row:nth-child(even) {
+        background-color: var(--color-surface-alt);
+    }
+
+    &__row:hover {
+        background-color: var(--color-border);
+    }
+}
+
+.progress-cell {
+    align-items: center;
+    display: flex;
+    gap: var(--space-sm);
+    min-inline-size: 8rem;
+}
+
+.bar {
+    background-color: var(--color-border);
+    block-size: 0.5rem;
+    border-radius: var(--radius-pill);
+    flex: 1;
+    min-inline-size: 4rem;
+    overflow: hidden;
+    position: relative;
+
+    &::before {
+        background-color: var(--color-primary);
+        block-size: 100%;
+        content: "";
+        inline-size: 0;
+        inset-block-start: 0;
+        inset-inline-start: 0;
+        position: absolute;
+    }
+
+    @each $step in $progress-steps {
+        &[data-progress="#{$step}"]::before {
+            inline-size: $step * 1%;
+        }
+    }
+}

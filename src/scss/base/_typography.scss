@@ -1,0 +1,61 @@
+@use "../abstracts" as *;
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: clamp(1.25rem, 1.05rem + 1vw, 1.6rem);
+}
+
+h3 {
+    font-size: to-rem(18);
+    margin-block: var(--space-md) var(--space-xs);
+}
+
+p {
+    margin-block-end: var(--space-md);
+}
+
+:where(section[id]) {
+    scroll-margin-top: calc(var(--size-topbar) + var(--space-md));
+}
+
+a:link {
+    color: var(--color-primary);
+}
+
+a:visited {
+    color: var(--color-link-visited);
+}
+
+a:hover {
+    color: var(--color-warning);
+}
+
+a:active {
+    color: var(--color-danger);
+}
+
+:is(a, button, input, select, textarea, [tabindex]):focus-visible {
+    @include focus-ring;
+}
+
+::selection {
+    background-color: #ffd54f;
+    color: #1b2733;
+}

@@ -1,0 +1,9 @@
+@use "../abstracts" as *;
+
+.u-visually-hidden {
+    @include visually-hidden;
+}
+
+.u-text-muted {
+    color: var(--color-text-muted);
+}

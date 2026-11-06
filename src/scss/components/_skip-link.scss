@@ -1,0 +1,22 @@
+@use "../abstracts" as *;
+
+.skip-link {
+    background-color: var(--color-primary);
+    border-end-end-radius: var(--radius-sm);
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    padding: var(--space-xs) var(--space-md);
+    position: absolute;
+    transform: translateY(-120%);
+    transition: transform 0.2s ease-in-out;
+    z-index: z("skip");
+
+    &:link,
+    &:visited {
+        color: var(--color-on-primary);
+    }
+
+    &:focus-visible {
+        transform: none;
+    }
+}

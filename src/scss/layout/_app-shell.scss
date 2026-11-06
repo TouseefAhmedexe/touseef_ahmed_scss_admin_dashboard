@@ -1,0 +1,58 @@
+@use "../abstracts" as *;
+
+.app {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    min-block-size: 100vh;
+
+    @include respond-to("lg") {
+        grid-template-columns: var(--width-sidebar) minmax(0, 1fr);
+    }
+}
+
+.app__main {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-inline-size: 0;
+}
+
+.app__backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    inset: 0;
+    position: fixed;
+    z-index: z("backdrop");
+}
+
+.app:has(.nav-toggle__input:checked) .app__backdrop {
+    display: block;
+
+    @include respond-to("lg") {
+        display: none;
+    }
+}
+
+.nav-toggle__input {
+    @include visually-hidden;
+}
+
+.nav-toggle__button {
+    border: 2px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-weight: bold;
+    padding: var(--space-2xs) var(--space-md);
+    user-select: none;
+
+    &:hover {
+        border-color: var(--color-primary);
+    }
+
+    @include respond-to("lg") {
+        display: none;
+    }
+}
+
+.app:has(.nav-toggle__input:focus-visible) .nav-toggle__button {
+    @include focus-ring;
+}

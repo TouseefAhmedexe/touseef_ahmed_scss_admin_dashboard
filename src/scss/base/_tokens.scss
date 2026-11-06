@@ -1,0 +1,50 @@
+@use "../abstracts" as *;
+
+:root {
+    --color-bg: #f3f6fb;
+    --color-surface: #ffffff;
+    --color-surface-alt: #e8f0fe;
+    --color-text: #1b2733;
+    --color-text-muted: #4b5a69;
+    --color-primary: #1b4db3;
+    --color-primary-strong: #0f2f73;
+    --color-on-primary: #ffffff;
+    --color-border: #c5d0e3;
+    --color-border-strong: #6b7c93;
+    --color-success: #1a6b35;
+    --color-warning: #8a4a00;
+    --color-danger: #b3261e;
+    --color-focus: #b45309;
+    --color-sidebar: #0f2f73;
+    --color-on-sidebar: #ffffff;
+    --color-link-visited: #6a3fb5;
+
+    --font-body: Arial, Helvetica, sans-serif;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-title: clamp(1.5rem, 1.1rem + 2vw, 2.25rem);
+
+    --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.15);
+    --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.2);
+
+    --size-topbar: 4rem;
+    --width-sidebar: #{$sidebar-width};
+
+    @each $name, $value in $spacing {
+        --space-#{$name}: #{$value};
+    }
+
+    @each $name, $value in $radii {
+        --radius-#{$name}: #{$value};
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        @include dark-tokens;
+    }
+}
+
+:root:has(#theme-toggle:checked) {
+    @include dark-tokens;
+}
