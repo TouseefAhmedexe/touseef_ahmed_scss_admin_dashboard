@@ -103,7 +103,111 @@
                             </div>
                         </div>
                     </section>
+<section class="dashboard__assignments panel" id="assignments">
+                        <h2 class="panel__title">Assignments</h2>
 
+                        <fieldset class="filters">
+                            <legend class="filters__legend">Show only</legend>
+
+                            <div class="filters__options">
+                                <input class="filters__input" type="radio" id="filter-all" name="status_filter" value="all" checked>
+                                <label class="filters__label" for="filter-all">All</label>
+
+                                <input class="filters__input" type="radio" id="filter-completed" name="status_filter" value="completed">
+                                <label class="filters__label" for="filter-completed">Completed</label>
+
+                                <input class="filters__input" type="radio" id="filter-in-progress" name="status_filter" value="in-progress">
+                                <label class="filters__label" for="filter-in-progress">In progress</label>
+
+                                <input class="filters__input" type="radio" id="filter-pending" name="status_filter" value="pending">
+                                <label class="filters__label" for="filter-pending">Pending</label>
+                            </div>
+                        </fieldset>
+
+                        <div class="table-wrap">
+                            <table class="table">
+                                <caption class="table__caption">Sample assignments of the training program</caption>
+
+                                <thead>
+                                    <tr>
+                                        <th class="table__head" scope="col">Assignment</th>
+                                        <th class="table__head" scope="col">Category</th>
+                                        <th class="table__head" scope="col">Mentor</th>
+                                        <th class="table__head" scope="col">Due date</th>
+                                        <th class="table__head" scope="col"><span class="tooltip" data-tooltip="Percent of the assignment that is finished" tabindex="0">Progress</span></th>
+                                        <th class="table__head" scope="col">Status</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr class="table__row" data-status="completed">
+                                        <td class="table__cell">Task 6: CSS Basics</td>
+                                        <td class="table__cell">CSS</td>
+                                        <td class="table__cell">Hamza Ali</td>
+                                        <td class="table__cell"><time datetime="2026-10-05">5 Oct 2026</time></td>
+                                        <td class="table__cell"><div class="progress-cell"><div class="bar" data-progress="100"></div><span>100%</span></div></td>
+                                        <td class="table__cell"><span class="badge badge--completed">Completed</span></td>
+                                    </tr>
+                                    <tr class="table__row" data-status="completed">
+                                        <td class="table__cell">Task 7: Box Model and Layout</td>
+                                        <td class="table__cell">CSS</td>
+                                        <td class="table__cell">Hamza Ali</td>
+                                        <td class="table__cell"><time datetime="2026-10-09">9 Oct 2026</time></td>
+                                        <td class="table__cell"><div class="progress-cell"><div class="bar" data-progress="100"></div><span>100%</span></div></td>
+                                        <td class="table__cell"><span class="badge badge--completed">Completed</span></td>
+                                    </tr>
+                                    <tr class="table__row" data-status="completed">
+                                        <td class="table__cell">Task 8: Responsive Layout</td>
+                                        <td class="table__cell">CSS</td>
+                                        <td class="table__cell">Hamza Ali</td>
+                                        <td class="table__cell"><time datetime="2026-10-14">14 Oct 2026</time></td>
+                                        <td class="table__cell"><div class="progress-cell"><div class="bar" data-progress="100"></div><span>100%</span></div></td>
+                                        <td class="table__cell"><span class="badge badge--completed">Completed</span></td>
+                                    </tr>
+                                    <tr class="table__row" data-status="completed">
+                                        <td class="table__cell">Task 9: Advanced CSS</td>
+                                        <td class="table__cell">CSS</td>
+                                        <td class="table__cell">Hamza Ali</td>
+                                        <td class="table__cell"><time datetime="2026-10-19">19 Oct 2026</time></td>
+                                        <td class="table__cell"><div class="progress-cell"><div class="bar" data-progress="100"></div><span>100%</span></div></td>
+                                        <td class="table__cell"><span class="badge badge--completed">Completed</span></td>
+                                    </tr>
+                                    <tr class="table__row" data-status="in-progress">
+                                        <td class="table__cell">Task 14: Browser APIs</td>
+                                        <td class="table__cell">JavaScript</td>
+                                        <td class="table__cell">Sara Ahmed</td>
+                                        <td class="table__cell"><time datetime="2026-11-10">10 Nov 2026</time></td>
+                                        <td class="table__cell"><div class="progress-cell"><div class="bar" data-progress="75"></div><span>75%</span></div></td>
+                                        <td class="table__cell"><span class="badge badge--in-progress">In progress</span></td>
+                                    </tr>
+                                    <tr class="table__row" data-status="in-progress">
+                                        <td class="table__cell">Task 16: Advanced CSS and Sass</td>
+                                        <td class="table__cell">CSS</td>
+                                        <td class="table__cell">Hamza Ali</td>
+                                        <td class="table__cell"><time datetime="2026-11-20">20 Nov 2026</time></td>
+                                        <td class="table__cell"><div class="progress-cell"><div class="bar" data-progress="50"></div><span>50%</span></div></td>
+                                        <td class="table__cell"><span class="badge badge--in-progress">In progress</span></td>
+                                    </tr>
+                                    <tr class="table__row" data-status="pending">
+                                        <td class="table__cell">Final Portfolio Review</td>
+                                        <td class="table__cell">Review</td>
+                                        <td class="table__cell">Ayesha Khan</td>
+                                        <td class="table__cell"><time datetime="2026-11-27">27 Nov 2026</time></td>
+                                        <td class="table__cell"><div class="progress-cell"><div class="bar" data-progress="0"></div><span>0%</span></div></td>
+                                        <td class="table__cell"><span class="badge badge--pending">Pending</span></td>
+                                    </tr>
+                                    <tr class="table__row" data-status="pending">
+                                        <td class="table__cell">Project Presentation</td>
+                                        <td class="table__cell">Review</td>
+                                        <td class="table__cell">Ayesha Khan</td>
+                                        <td class="table__cell"><time datetime="2026-12-04">4 Dec 2026</time></td>
+                                        <td class="table__cell"><div class="progress-cell"><div class="bar" data-progress="0"></div><span>0%</span></div></td>
+                                        <td class="table__cell"><span class="badge badge--pending">Pending</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
                 </div>
 
             </main>
