@@ -1,0 +1,16 @@
+{
+    "name": "touseef-ahmed-scss-admin-dashboard",
+    "private": true,
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "css": "sass --style=expanded --source-map src/scss/main.scss compiled/main.css"
+    },
+    "devDependencies": {
+        "sass": "^1.108.0",
+        "vite": "^8.3.6"
+    }
+}
