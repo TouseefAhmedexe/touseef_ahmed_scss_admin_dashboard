@@ -8,7 +8,7 @@
     cursor: pointer;
     display: inline-block;
     font-weight: bold;
-    padding: 0.6em 1.2em;
+    padding: var(--button-padding-block) var(--button-padding-inline);
     text-align: center;
     text-decoration: none;
     transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
@@ -51,7 +51,7 @@
 
     &--loading {
         cursor: progress;
-        padding-inline-start: 2.6em;
+        padding-inline-start: var(--space-xl);
         position: relative;
 
         &:disabled {
@@ -63,12 +63,12 @@
             animation: spin 1s linear infinite;
             block-size: 1em;
             border: 3px solid rgba(255, 255, 255, 0.4);
-            border-block-start-color: #ffffff;
+            border-block-start-color: var(--color-on-primary);
             border-radius: 50%;
             content: "";
             inline-size: 1em;
             inset-block-start: 50%;
-            inset-inline-start: 1em;
+            inset-inline-start: var(--space-sm);
             margin-block-start: -0.5em;
             position: absolute;
         }

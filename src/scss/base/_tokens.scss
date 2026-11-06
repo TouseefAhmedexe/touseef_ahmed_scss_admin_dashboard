@@ -19,6 +19,16 @@
     --color-on-sidebar: #ffffff;
     --color-link-visited: #6a3fb5;
 
+    /* Tokenized color additions replacing hard-coded values */
+    --color-accent-gold: #ffd54f;
+    --color-selection-bg: #ffd54f;
+    --color-selection-text: #1b2733;
+    --color-avatar-bg: var(--color-primary);
+    --color-avatar-size: var(--space-xl);
+    --color-dot-size: 0.6rem;
+    --button-padding-block: var(--space-xs);
+    --button-padding-inline: var(--space-md);
+
     --font-body: Arial, Helvetica, sans-serif;
     --font-size-sm: 0.875rem;
     --font-size-base: 1rem;
@@ -39,12 +49,15 @@
     }
 }
 
+/* System dark mode applies ONLY when explicitly not forced to light */
 @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme="light"]) {
         @include dark-tokens;
     }
 }
 
-:root:has(#theme-toggle:checked) {
+/* Explicit toggle override */
+:root:has(#theme-toggle:checked),
+:root[data-theme="dark"] {
     @include dark-tokens;
 }

@@ -56,6 +56,6 @@ a:active {
 }
 
 ::selection {
-    background-color: #ffd54f;
-    color: #1b2733;
+    background-color: var(--color-selection-bg);
+    color: var(--color-selection-text);
 }

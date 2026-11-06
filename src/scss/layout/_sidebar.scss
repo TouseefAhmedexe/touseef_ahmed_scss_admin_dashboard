@@ -1,7 +1,7 @@
 @use "../abstracts" as *;
 
 .sidebar {
-    --color-focus: #ffd54f;
+    --color-focus: var(--color-accent-gold);
     background-color: var(--color-sidebar);
     block-size: 100vh;
     color: var(--color-on-sidebar);
@@ -70,7 +70,7 @@
 
     &:hover {
         background-color: rgba(255, 255, 255, 0.15);
-        color: #ffd54f;
+        color: var(--color-accent-gold);
     }
 
     &--active {
@@ -78,13 +78,13 @@
 
         &,
         &:hover {
-            background-color: #ffffff;
+            background-color: var(--color-surface);
         }
 
         &:link,
         &:visited,
         &:hover {
-            color: #0f2f73;
+            color: var(--color-primary-strong);
         }
     }
 }

@@ -36,14 +36,14 @@
 }
 
 .topbar__avatar {
-    background-color: var(--color-primary);
-    block-size: 2.25rem;
+    background-color: var(--color-avatar-bg);
+    block-size: var(--color-avatar-size);
     border-radius: 50%;
     color: var(--color-on-primary);
     display: grid;
     font-size: var(--font-size-sm);
     font-weight: bold;
-    inline-size: 2.25rem;
+    inline-size: var(--color-avatar-size);
     place-items: center;
 }
 

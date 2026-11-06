@@ -254,7 +254,8 @@
 
         <section class="modal__box">
             <h2 class="modal__title">New assignment</h2>
-            <p class="u-text-muted">This form has no server, so sending it only reloads the page.</p>
+            <p class="u-text-muted">Fill out the assignment details below.</p>
+            <div class="form__alert" id="form-alert">Assignment successfully saved!</div>
 
             <form class="form" id="assignment-form">
                 <div class="form__field">
@@ -265,7 +266,7 @@
 
                 <div class="form__field">
                     <label class="form__label" for="assignment-category">Category</label>
-                    <select class="form__control" id="assignment-category" name="category" required>
+                    <select class="form__control" id="assignment-category" name="category" placeholder=" " required>
                         <option value="" selected>-- Select a category --</option>
                         <option value="css">CSS</option>
                         <option value="javascript">JavaScript</option>
@@ -280,7 +281,7 @@
 
                 <div class="form__field">
                     <label class="form__label" for="assignment-due">Due date</label>
-                    <input class="form__control" type="date" id="assignment-due" name="due_date" min="2026-11-16" max="2027-03-31" required>
+                    <input class="form__control" type="date" id="assignment-due" name="due_date" min="2026-11-16" max="2027-03-31" placeholder=" " required>
                 </div>
 
                 <div class="form__field">
@@ -296,6 +297,42 @@
             </form>
         </section>
     </div>
+
+    <!-- Enhanced Interaction & Accessibility Helper Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('assignment-form');
+            const alertBox = document.getElementById('form-alert');
+            const themeToggle = document.getElementById('theme-toggle');
+
+            // Explicit Light/Dark mode state management
+            if (themeToggle) {
+                themeToggle.addEventListener('change', () => {
+                    document.documentElement.setAttribute('data-theme', themeToggle.checked ? 'dark' : 'light');
+                });
+            }
+
+            // Interactive Form Submission
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    if (alertBox) alertBox.classList.add('form__alert--active');
+                    setTimeout(() => {
+                        window.location.hash = '#main-content';
+                        if (alertBox) alertBox.classList.remove('form__alert--active');
+                        form.reset();
+                    }, 1200);
+                });
+            }
+
+            // Keyboard Escape Key listener to close modal
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && window.location.hash === '#new-assignment') {
+                    window.location.hash = '#main-content';
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
