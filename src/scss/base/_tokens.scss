@@ -19,13 +19,19 @@
     --color-on-sidebar: #ffffff;
     --color-link-visited: #6a3fb5;
 
-    /* Tokenized color additions replacing hard-coded values */
+    /* Tokenized color additions replacing raw colors and rgba literals */
     --color-accent-gold: #ffd54f;
     --color-selection-bg: #ffd54f;
     --color-selection-text: #1b2733;
     --color-avatar-bg: var(--color-primary);
-    --color-avatar-size: var(--space-xl);
-    --color-dot-size: 0.6rem;
+    --color-backdrop: rgba(0, 0, 0, 0.5);
+    --color-modal-backdrop: rgba(0, 0, 0, 0.6);
+    --color-hover-overlay: rgba(255, 255, 255, 0.15);
+    --color-spinner-track: rgba(255, 255, 255, 0.4);
+
+    /* Renamed size tokens removing invalid 'color-' prefixes */
+    --avatar-size: var(--space-xl);
+    --dot-size: 0.6rem;
     --button-padding-block: var(--space-xs);
     --button-padding-inline: var(--space-md);
 
@@ -49,15 +55,29 @@
     }
 }
 
-/* System dark mode applies ONLY when explicitly not forced to light */
+/* Fallback system dark mode applies when data-theme is not explicitly overridden */
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
         @include dark-tokens;
     }
 }
 
-/* Explicit toggle override */
-:root:has(#theme-toggle:checked),
+/* Explicit toggle overrides */
 :root[data-theme="dark"] {
     @include dark-tokens;
+}
+
+:root[data-theme="light"] {
+    /* Guarantees explicit light theme overrides system preference */
+    --color-bg: #f3f6fb;
+    --color-surface: #ffffff;
+    --color-surface-alt: #e8f0fe;
+    --color-text: #1b2733;
+    --color-text-muted: #4b5a69;
+    --color-primary: #1b4db3;
+    --color-primary-strong: #0f2f73;
+    --color-on-primary: #ffffff;
+    --color-border: #c5d0e3;
+    --color-border-strong: #6b7c93;
+    --color-sidebar: #0f2f73;
 }

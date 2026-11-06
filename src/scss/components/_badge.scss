@@ -17,11 +17,11 @@
 
     &::before {
         background: var(--badge-dot);
-        block-size: var(--color-dot-size);
+        block-size: var(--dot-size);
         border: 2px solid currentColor;
         border-radius: 50%;
         content: "";
-        inline-size: var(--color-dot-size);
+        inline-size: var(--dot-size);
     }
 }
 

@@ -8,12 +8,13 @@
     position: fixed;
     z-index: z("modal");
 
-    &:target {
+    &:target,
+    &--open {
         display: grid;
     }
 
     &__backdrop {
-        background-color: rgba(0, 0, 0, 0.6);
+        background-color: var(--color-modal-backdrop);
         inset: 0;
         position: absolute;
     }

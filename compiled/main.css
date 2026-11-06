@@ -52,13 +52,18 @@
     --color-sidebar: #0f2f73;
     --color-on-sidebar: #ffffff;
     --color-link-visited: #6a3fb5;
-    /* Tokenized color additions replacing hard-coded values */
+    /* Tokenized color additions replacing raw colors and rgba literals */
     --color-accent-gold: #ffd54f;
     --color-selection-bg: #ffd54f;
     --color-selection-text: #1b2733;
     --color-avatar-bg: var(--color-primary);
-    --color-avatar-size: var(--space-xl);
-    --color-dot-size: 0.6rem;
+    --color-backdrop: rgba(0, 0, 0, 0.5);
+    --color-modal-backdrop: rgba(0, 0, 0, 0.6);
+    --color-hover-overlay: rgba(255, 255, 255, 0.15);
+    --color-spinner-track: rgba(255, 255, 255, 0.4);
+    /* Renamed size tokens removing invalid 'color-' prefixes */
+    --avatar-size: var(--space-xl);
+    --dot-size: 0.6rem;
     --button-padding-block: var(--space-xs);
     --button-padding-inline: var(--space-md);
     --font-body: Arial, Helvetica, sans-serif;
@@ -79,7 +84,7 @@
     --radius-md: 12px;
     --radius-pill: 999px;
   }
-  /* System dark mode applies ONLY when explicitly not forced to light */
+  /* Fallback system dark mode applies when data-theme is not explicitly overridden */
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme=light]) {
       --color-bg: #0f1722;
@@ -100,8 +105,7 @@
       --color-link-visited: #c4a8ff;
     }
   }
-  /* Explicit toggle override */
-  :root:has(#theme-toggle:checked),
+  /* Explicit toggle overrides */
   :root[data-theme=dark] {
     --color-bg: #0f1722;
     --color-surface: #17212f;
@@ -119,6 +123,20 @@
     --color-focus: #fbbf24;
     --color-sidebar: #0b1b3f;
     --color-link-visited: #c4a8ff;
+  }
+  :root[data-theme=light] {
+    /* Guarantees explicit light theme overrides system preference */
+    --color-bg: #f3f6fb;
+    --color-surface: #ffffff;
+    --color-surface-alt: #e8f0fe;
+    --color-text: #1b2733;
+    --color-text-muted: #4b5a69;
+    --color-primary: #1b4db3;
+    --color-primary-strong: #0f2f73;
+    --color-on-primary: #ffffff;
+    --color-border: #c5d0e3;
+    --color-border-strong: #6b7c93;
+    --color-sidebar: #0f2f73;
   }
   html {
     scroll-behavior: smooth;
@@ -199,7 +217,7 @@
     min-inline-size: 0;
   }
   .app__backdrop {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--color-backdrop);
     display: none;
     inset: 0;
     position: fixed;
@@ -304,7 +322,7 @@
     color: var(--color-on-sidebar);
   }
   .sidebar__link:hover {
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: var(--color-hover-overlay);
     color: var(--color-accent-gold);
   }
   .sidebar__link--active {
@@ -354,13 +372,13 @@
   }
   .topbar__avatar {
     background-color: var(--color-avatar-bg);
-    block-size: var(--color-avatar-size);
+    block-size: var(--avatar-size);
     border-radius: 50%;
     color: var(--color-on-primary);
     display: grid;
     font-size: var(--font-size-sm);
     font-weight: bold;
-    inline-size: var(--color-avatar-size);
+    inline-size: var(--avatar-size);
     place-items: center;
   }
   .theme-switch {
@@ -472,7 +490,7 @@
   .button--loading::before {
     animation: spin 1s linear infinite;
     block-size: 1em;
-    border: 3px solid rgba(255, 255, 255, 0.4);
+    border: 3px solid var(--color-spinner-track);
     border-block-start-color: var(--color-on-primary);
     border-radius: 50%;
     content: "";
@@ -504,11 +522,11 @@
   }
   .badge::before {
     background: var(--badge-dot);
-    block-size: var(--color-dot-size);
+    block-size: var(--dot-size);
     border: 2px solid currentColor;
     border-radius: 50%;
     content: "";
-    inline-size: var(--color-dot-size);
+    inline-size: var(--dot-size);
   }
   .badge--completed {
     --badge-color: var(--color-success);
@@ -664,25 +682,43 @@
     background-color: var(--color-primary);
     block-size: 100%;
     content: "";
-    inline-size: 0;
+    inline-size: var(--progress, 0%);
     inset-block-start: 0;
     inset-inline-start: 0;
     position: absolute;
   }
-  .bar[data-progress="0"]::before {
-    inline-size: 0%;
-  }
-  .bar[data-progress="25"]::before {
-    inline-size: 25%;
-  }
-  .bar[data-progress="50"]::before {
-    inline-size: 50%;
-  }
-  .bar[data-progress="75"]::before {
-    inline-size: 75%;
-  }
-  .bar[data-progress="100"]::before {
-    inline-size: 100%;
+  /* Mobile Table Reflow (< 30em / 480px) */
+  @media (max-width: 30em) {
+    .table {
+      display: block;
+      min-inline-size: 100%;
+    }
+    .table thead {
+      display: none;
+    }
+    .table tbody,
+    .table tr,
+    .table td {
+      display: block;
+      inline-size: 100%;
+    }
+    .table tr {
+      border-block-end: 2px solid var(--color-border);
+      padding-block: var(--space-xs);
+    }
+    .table td {
+      border: none;
+      display: flex;
+      justify-content: space-between;
+      padding: var(--space-xs) var(--space-sm);
+      text-align: end;
+    }
+    .table td::before {
+      content: attr(data-label);
+      font-weight: bold;
+      margin-inline-end: var(--space-xs);
+      text-align: start;
+    }
   }
   .tooltip {
     cursor: help;
@@ -845,11 +881,11 @@
     position: fixed;
     z-index: 50;
   }
-  .modal:target {
+  .modal:target, .modal--open {
     display: grid;
   }
   .modal__backdrop {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: var(--color-modal-backdrop);
     inset: 0;
     position: absolute;
   }

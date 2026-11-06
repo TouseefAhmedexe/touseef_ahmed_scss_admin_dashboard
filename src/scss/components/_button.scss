@@ -62,7 +62,7 @@
         &::before {
             animation: spin 1s linear infinite;
             block-size: 1em;
-            border: 3px solid rgba(255, 255, 255, 0.4);
+            border: 3px solid var(--color-spinner-track);
             border-block-start-color: var(--color-on-primary);
             border-radius: 50%;
             content: "";

@@ -17,7 +17,7 @@
 }
 
 .app__backdrop {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--color-backdrop);
     display: none;
     inset: 0;
     position: fixed;

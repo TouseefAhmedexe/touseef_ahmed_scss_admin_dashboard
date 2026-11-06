@@ -60,15 +60,48 @@
         background-color: var(--color-primary);
         block-size: 100%;
         content: "";
-        inline-size: 0;
+        inline-size: var(--progress, 0%);
         inset-block-start: 0;
         inset-inline-start: 0;
         position: absolute;
     }
+}
 
-    @each $step in $progress-steps {
-        &[data-progress="#{$step}"]::before {
-            inline-size: $step * 1%;
+/* Mobile Table Reflow (< 30em / 480px) */
+@media (max-width: 30em) {
+    .table {
+        display: block;
+        min-inline-size: 100%;
+
+        thead {
+            display: none;
+        }
+
+        tbody,
+        tr,
+        td {
+            display: block;
+            inline-size: 100%;
+        }
+
+        tr {
+            border-block-end: 2px solid var(--color-border);
+            padding-block: var(--space-xs);
+        }
+
+        td {
+            border: none;
+            display: flex;
+            justify-content: space-between;
+            padding: var(--space-xs) var(--space-sm);
+            text-align: end;
+
+            &::before {
+                content: attr(data-label);
+                font-weight: bold;
+                margin-inline-end: var(--space-xs);
+                text-align: start;
+            }
         }
     }
 }
